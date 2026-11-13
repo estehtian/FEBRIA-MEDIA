@@ -77,16 +77,7 @@
     menuBtn?.setAttribute('aria-expanded','false');
     if (menuBtn) { menuBtn.textContent = '☰'; menuBtn.setAttribute('aria-label','Buka menu'); }
   };
-  menuBtn?.addEventListener('click', () => {
-    const opened = nav?.classList.contains('open');
-    if (opened) closeMenu();
-    else {
-      nav?.classList.add('open');
-      menuBtn.setAttribute('aria-expanded','true');
-      menuBtn.textContent = '×';
-      menuBtn.setAttribute('aria-label','Tutup menu');
-    }
-  });
+  // The core app.js owns the menu toggle; this layer only closes it on outside click / Escape.
   nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', event => { if (event.key === 'Escape') closeMenu(); });
   document.addEventListener('click', event => {
