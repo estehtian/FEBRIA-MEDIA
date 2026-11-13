@@ -57,4 +57,40 @@
   modal?.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
   document.addEventListener('keydown', event => { if (event.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
   document.getElementById('year').textContent = new Date().getFullYear();
+
+
+  // Progressive reveal: keeps content visible when browser support is limited.
+  const revealTargets = document.querySelectorAll('.hero-copy,.hero-visual,.section-heading,.article-card,.pillar-item,.about-section>div');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('reveal-ready');
+    revealTargets.forEach((element,index) => {
+      element.classList.add('reveal');
+      element.style.transitionDelay = (index % 4) * 70 + 'ms';
+    });
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12});
+    revealTargets.forEach(element => revealObserver.observe(element));
+  }
+
+  // Keep the navigation indicator aligned with the visible section.
+  const navLinks = [...document.querySelectorAll('.main-nav a')];
+  const observedSections = [...document.querySelectorAll('main section[id], main section .section-wrap[id]')];
+  if ('IntersectionObserver' in window) {
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target.id || entry.target.closest('section')?.id;
+          navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#' + target));
+        }
+      });
+    }, {rootMargin:'-35% 0px -55% 0px'});
+    observedSections.forEach(section => navObserver.observe(section));
+  }
+
 })();
