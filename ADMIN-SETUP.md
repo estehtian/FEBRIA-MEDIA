@@ -44,3 +44,17 @@ Dashboard tersedia di `/admin/`. Website publik yang sudah ada tidak dihapus ata
 ## Alamat
 - Website: https://estehtian.github.io/FEBRIA-MEDIA/
 - Dashboard: https://estehtian.github.io/FEBRIA-MEDIA/admin/
+
+
+## Integrasi website publik (sudah ditambahkan ke repository)
+- Homepage, halaman kategori, dan arsip memuat artikel berstatus `published` dari Supabase; artikel lama di `data.js` tetap menjadi konten fallback.
+- Halaman detail dinamis tersedia di `artikel/baca.html?slug=SLUG`.
+- Setelah editor menyetujui berita tanpa jadwal masa depan, status berubah menjadi `published` dan berita dapat tampil di website.
+- Jika tanggal publikasi berada di masa depan, persetujuan mengubah status menjadi `approved`; artikel baru tampil setelah scheduler menerbitkannya.
+
+## Aktifkan publikasi otomatis terjadwal
+1. Jalankan `supabase/scheduled-publishing.sql` di SQL Editor.
+2. Di Supabase, aktifkan extension `pg_cron` melalui Database → Extensions (jika tersedia pada project).
+3. Jalankan blok `cron.schedule` yang dikomentari di bagian bawah file SQL.
+4. Periksa job dengan `select * from cron.job;`. Uji dahulu memakai satu berita uji dengan jadwal beberapa menit ke depan.
+5. Pastikan status berita adalah `approved`; scheduler tidak menerbitkan draft atau berita pending.
