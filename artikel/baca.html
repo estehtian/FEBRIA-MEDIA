@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#06111c"><meta name="robots" content="index,follow"><link rel="stylesheet" href="../assets/css/style.css"><title>Artikel | FEBRIA MEDIA</title></head>
+<body><header class="header"><div class="container nav-wrap"><a class="brand" href="../index.html"><span class="brand-symbol">F<span>.</span></span><span><b>FEBRIA <i>MEDIA</i></b><small>INFORMASI • BISNIS • TEKNOLOGI</small></span></a><a class="nav-cta" href="../index.html">← Beranda</a></div></header>
+<main class="container"><article class="article-detail" id="story"><p class="eyebrow">FEBRIA MEDIA / EDITORIAL</p><h1>Memuat artikel…</h1><p class="lead">Mohon tunggu sebentar.</p></article></main>
+<footer class="footer"><div class="container footer-inner"><span>© <span id="year"></span> FEBRIA MEDIA</span><a href="../pedoman-redaksi.html">Pedoman Redaksi</a></div></footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="../assets/js/supabase-config.js"></script>
+<script>
+(async()=>{const root=document.getElementById('story'),slug=new URLSearchParams(location.search).get('slug');if(!slug){root.innerHTML='<h1>Artikel tidak ditemukan</h1><p><a href="../index.html">Kembali ke beranda</a></p>';return;}
+try{const c=window.supabase.createClient(window.FEBRIA_SUPABASE_CONFIG.url,window.FEBRIA_SUPABASE_CONFIG.anonKey);const {data:a,error}=await c.from('articles').select('id,title,slug,category,excerpt,content,image_url,source_url,author_name,seo_title,seo_description,published_at').eq('slug',slug).eq('status','published').maybeSingle();if(error)throw error;if(!a)throw new Error('Artikel belum tersedia atau belum diterbitkan.');
+const cats={update:'FEBRIA UPDATE',business:'FEBRIA BUSINESS',tech:'FEBRIA TECH',viral:'FEBRIA VIRAL FACT'};document.title=(a.seo_title||a.title)+' | FEBRIA MEDIA';const meta=document.createElement('meta');meta.name='description';meta.content=a.seo_description||a.excerpt;document.head.appendChild(meta);
+const paras=(a.content||'').split(/\n\s*\n/).filter(Boolean).map(p=>'<p>'+p.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))+'</p>').join('');
+const image=a.image_url?'<img src="'+a.image_url.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" alt="'+a.title.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" style="width:100%;height:auto;border-radius:8px;margin:22px 0">':'';
+const source=a.source_url?'<p class="source-note"><b>REFERENSI:</b> <a href="'+a.source_url.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" rel="noopener noreferrer" target="_blank">Buka sumber</a></p>':'';
+root.innerHTML='<div class="eyebrow">'+(cats[a.category]||'FEBRIA MEDIA')+' / '+new Date(a.published_at||Date.now()).toLocaleDateString('id-ID')+'</div><h1>'+a.title.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))+'</h1><p class="lead">'+a.excerpt.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))+'</p>'+image+paras+'<p class="muted">Penulis: '+(a.author_name||'Redaksi FEBRIA MEDIA')+'</p>'+source+'<p><a href="../index.html">← Kembali ke FEBRIA MEDIA</a></p>';
+await c.rpc('increment_article_view',{article_uuid:a.id});
+}catch(e){root.innerHTML='<h1>Artikel belum tersedia</h1><p>'+String(e.message).replace(/[&<>]/g,'')+'</p><p><a href="../index.html">← Kembali ke beranda</a></p>';}}
+)();
+</script></body></html>
