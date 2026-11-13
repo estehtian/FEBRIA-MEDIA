@@ -1,0 +1,9 @@
+{
+  "name": "FEBRIA MEDIA",
+  "short_name": "FEBRIA",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#06111c",
+  "theme_color": "#06111c",
+  "icons": []
+}

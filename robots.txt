@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://estehtian.github.io/FEBRIA-MEDIA/sitemap.xml
