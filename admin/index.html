@@ -29,6 +29,7 @@
   <button class="side-link" data-view="articles">▤ <span>Semua berita</span></button>
   <button class="side-link" data-view="editor">＋ <span>Tulis berita</span></button>
   <button class="side-link" data-view="review">◷ <span>Persetujuan</span><b id="pendingBadge">0</b></button>
+  <button class="side-link" data-view="team" id="teamNav" hidden>♙ <span>Tim redaksi</span></button>
   <div class="side-label">SYSTEM</div>
   <a class="side-link" href="../index.html">↗ <span>Lihat website</span></a>
   <button id="logoutBtn" class="side-link logout">⇥ <span>Keluar</span></button>
@@ -78,6 +79,12 @@
   </section>
   <section id="view-review" class="view" hidden>
    <div class="panel"><div class="panel-head"><div><p class="eyebrow">EDITORIAL GOVERNANCE</p><h3>Antrian persetujuan</h3></div><button class="text-btn" id="refreshReview">↻ Muat ulang</button></div><div id="reviewList" class="review-list">Memuat antrian…</div></div>
+  </section>
+  <section id="view-team" class="view" hidden>
+   <div class="team-intro panel"><p class="eyebrow">PEOPLE & PERMISSIONS</p><h3>Manajemen tim redaksi</h3><p class="muted">Kelola role penulis, editor, dan administrator. Akun login baru dibuat melalui Supabase Authentication agar kredensial tidak pernah disimpan di website.</p></div>
+   <div class="stats-grid team-stats"><article class="stat-card"><span>Total anggota</span><strong id="teamTotal">—</strong><small>Profil terdaftar</small></article><article class="stat-card"><span>Penulis</span><strong id="teamAuthors">—</strong><small>Role author</small></article><article class="stat-card"><span>Editor</span><strong id="teamEditors">—</strong><small>Role editor</small></article><article class="stat-card"><span>Administrator</span><strong id="teamAdmins">—</strong><small>Role admin</small></article></div>
+   <div class="panel"><div class="panel-head"><div><p class="eyebrow">TEAM DIRECTORY</p><h3>Daftar anggota redaksi</h3></div><button class="text-btn" id="refreshTeam">↻ Muat ulang</button></div><div class="table-wrap"><table><thead><tr><th>Nama</th><th>Email</th><th>Role</th><th>Terdaftar</th><th>Aksi</th></tr></thead><tbody id="teamRows"><tr><td colspan="5">Memuat anggota…</td></tr></tbody></table></div><p id="teamMessage" class="muted small" role="status"></p></div>
+   <div class="panel"><p class="eyebrow">ONBOARDING / AKUN BARU</p><h3>Tambahkan penulis atau editor</h3><ol class="onboarding-steps"><li>Buka Supabase Dashboard → Authentication → Users.</li><li>Pilih <b>Add user</b> atau <b>Invite user</b>, lalu masukkan email anggota redaksi.</li><li>Setelah akun dibuat/diundang, kembali ke dashboard FEBRIA MEDIA dan klik <b>Muat ulang</b>.</li><li>Atur role anggota tersebut menjadi <b>Penulis</b> atau <b>Editor</b> pada daftar anggota di atas.</li><li>Anggota menggunakan undangan atau kredensial yang disiapkan melalui Supabase untuk login ke dashboard.</li></ol><p class="muted small">Pembuatan akun dilakukan di Supabase Auth. Jangan meminta anggota mengirim password melalui chat dan jangan menaruh service_role key di website.</p></div>
   </section>
   <footer class="main-foot">FEBRIA MEDIA · EDITORIAL MANAGEMENT SYSTEM <span>SECURE WORKSPACE</span></footer>
  </main>
