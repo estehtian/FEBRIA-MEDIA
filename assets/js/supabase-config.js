@@ -4,6 +4,6 @@
    File ini boleh dipublikasikan karena anon key dibatasi oleh RLS.
 */
 window.FEBRIA_SUPABASE_CONFIG = {
-  url: "https://YOUR-PROJECT-REF.supabase.co",
-  anonKey: "YOUR_SUPABASE_ANON_PUBLIC_KEY"
+  url: "https://lxvoxzdqxvasesxetyyc.supabase.co",
+  anonKey: "sb_publishable_vQNgN6rgVScoLWHJRXkmYQ_2JCAEGwn"
 };
