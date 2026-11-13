@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#06111c"><meta name="robots" content="noindex,nofollow">
+<title>Newsroom Dashboard | FEBRIA MEDIA</title>
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="../assets/js/supabase-config.js"></script>
+<script src="../assets/js/admin.js" defer></script>
+</head>
+<body>
+<div id="loginView" class="login-shell">
+ <form id="loginForm" class="login-card">
+  <div class="brand-mark">F<span>.</span></div><p class="eyebrow">FEBRIA MEDIA / NEWSROOM</p>
+  <h1>Editorial access.</h1><p class="muted">Masuk untuk mengelola ruang redaksi FEBRIA MEDIA.</p>
+  <label>Email admin<input id="email" type="email" autocomplete="username" required placeholder="admin@domain.com"></label>
+  <label>Password<input id="password" type="password" autocomplete="current-password" required placeholder="Password akun Supabase"></label>
+  <button class="btn primary" type="submit">Masuk ke dashboard <span>↗</span></button>
+  <p id="loginMessage" class="message" role="status"></p>
+  <small class="muted">Akses akun dibuat melalui Supabase Auth. Pendaftaran publik tidak tersedia.</small>
+ </form>
+</div>
+<div id="appView" class="app-shell" hidden>
+ <aside class="sidebar">
+  <a class="brand" href="../index.html"><span class="brand-mark">F<span>.</span></span><span><b>FEBRIA <i>MEDIA</i></b><small>EDITORIAL DESK</small></span></a>
+  <div class="side-label">WORKSPACE</div>
+  <button class="side-link active" data-view="overview">▦ <span>Ringkasan</span></button>
+  <button class="side-link" data-view="articles">▤ <span>Semua berita</span></button>
+  <button class="side-link" data-view="editor">＋ <span>Tulis berita</span></button>
+  <button class="side-link" data-view="review">◷ <span>Persetujuan</span><b id="pendingBadge">0</b></button>
+  <div class="side-label">SYSTEM</div>
+  <a class="side-link" href="../index.html">↗ <span>Lihat website</span></a>
+  <button id="logoutBtn" class="side-link logout">⇥ <span>Keluar</span></button>
+  <div class="sidebar-foot">SIGNAL OVER NOISE.<br><span>FEBRIA MEDIA · 2026</span></div>
+ </aside>
+ <main class="main">
+  <header class="topbar"><div><p class="eyebrow">EDITORIAL CONTROL CENTER</p><h1 id="pageTitle">Ringkasan redaksi</h1></div><div class="user-chip"><span class="online-dot"></span><span id="userEmail">Admin</span></div></header>
+  <div id="globalMessage" class="global-message" role="status"></div>
+  <section id="view-overview" class="view">
+   <div class="welcome"><div><p class="eyebrow">NEWSROOM / LIVE WORKSPACE</p><h2>Informasi berkualitas<br><em>dimulai dari redaksi.</em></h2><p>Kelola naskah, verifikasi, persetujuan, dan publikasi dalam satu tempat.</p></div><button class="btn primary" data-go="editor">＋ Tulis berita baru</button></div>
+   <div class="stats-grid">
+    <article class="stat-card"><span>Total berita</span><strong id="statTotal">—</strong><small>Seluruh naskah</small></article>
+    <article class="stat-card"><span>Sudah terbit</span><strong id="statPublished">—</strong><small>Artikel publik</small></article>
+    <article class="stat-card"><span>Menunggu review</span><strong id="statPending">—</strong><small>Perlu persetujuan editor</small></article>
+    <article class="stat-card"><span>Total pembaca</span><strong id="statViews">—</strong><small>Akumulasi tayangan tercatat</small></article>
+   </div>
+   <div class="panel"><div class="panel-head"><div><p class="eyebrow">LATEST ACTIVITY</p><h3>Berita terbaru</h3></div><button class="text-btn" data-go="articles">Lihat semua →</button></div><div class="table-wrap"><table><thead><tr><th>Judul</th><th>Kategori</th><th>Status</th><th>Tanggal</th></tr></thead><tbody id="recentRows"><tr><td colspan="4">Memuat data…</td></tr></tbody></table></div></div>
+  </section>
+  <section id="view-articles" class="view" hidden>
+   <div class="toolbar"><input id="articleSearch" type="search" placeholder="Cari judul atau slug…"><select id="statusFilter"><option value="">Semua status</option><option>draft</option><option>pending</option><option>approved</option><option>published</option><option>rejected</option></select><button class="btn primary" data-go="editor">＋ Berita baru</button></div>
+   <div class="panel"><div class="table-wrap"><table><thead><tr><th>Berita</th><th>Kategori</th><th>Status</th><th>Jadwal / tanggal</th><th>Aksi</th></tr></thead><tbody id="articleRows"><tr><td colspan="5">Memuat data…</td></tr></tbody></table></div></div>
+  </section>
+  <section id="view-editor" class="view" hidden>
+   <form id="articleForm" class="panel editor-form">
+    <input id="articleId" type="hidden">
+    <div class="panel-head"><div><p class="eyebrow">CONTENT STUDIO</p><h3 id="formHeading">Tulis berita baru</h3></div><span class="draft-indicator">● AUTOSAVE OFF / MANUAL SAVE</span></div>
+    <div class="form-grid">
+     <label class="wide">Judul berita *<input id="title" maxlength="180" required placeholder="Tulis judul yang akurat dan informatif"></label>
+     <label>Slug URL *<input id="slug" required pattern="[a-z0-9]+(?:-[a-z0-9]+)*" placeholder="judul-berita"></label>
+     <label>Kategori *<select id="category" required><option value="update">FEBRIA Update</option><option value="business">Business</option><option value="tech">Technology</option><option value="viral">Viral Fact</option></select></label>
+     <label class="wide">Ringkasan / excerpt *<textarea id="excerpt" rows="3" maxlength="320" required placeholder="Ringkasan singkat untuk kartu berita dan mesin pencari"></textarea></label>
+     <label class="wide">Isi berita *<textarea id="content" rows="12" required placeholder="Tulis isi berita. Pisahkan paragraf dengan satu baris kosong."></textarea></label>
+     <label>URL gambar utama<input id="imageUrl" type="url" placeholder="https://… (opsional)"></label>
+     <label>Upload gambar<input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp"></label>
+     <label>Sumber / referensi<input id="source" placeholder="Nama sumber dan tautan referensi"></label>
+     <label>Penulis<input id="author" placeholder="Nama penulis / redaksi"></label>
+     <div class="wide seo-box"><p class="eyebrow">SEARCH ENGINE OPTIMIZATION</p>
+      <label>SEO title<input id="seoTitle" maxlength="70" placeholder="Kosongkan untuk memakai judul berita"></label>
+      <label>Meta description<textarea id="seoDescription" rows="2" maxlength="160" placeholder="Deskripsi untuk hasil pencarian (maks. 160 karakter)"></textarea></label>
+     </div>
+     <label>Status naskah<select id="status"><option value="draft">Draft pribadi</option><option value="pending">Kirim untuk persetujuan</option></select></label>
+     <label>Jadwal publikasi<input id="scheduledAt" type="datetime-local"></label>
+    </div>
+    <div class="form-actions"><button type="button" class="btn secondary" id="resetForm">Bersihkan</button><button type="submit" class="btn primary" id="saveBtn">Simpan berita</button></div>
+    <p class="muted small">Berita baru tidak langsung tampil di website. Editor harus menyetujui naskah; jadwal tayang diproses setelah status disetujui dan fungsi penjadwalan diaktifkan.</p>
+   </form>
+  </section>
+  <section id="view-review" class="view" hidden>
+   <div class="panel"><div class="panel-head"><div><p class="eyebrow">EDITORIAL GOVERNANCE</p><h3>Antrian persetujuan</h3></div><button class="text-btn" id="refreshReview">↻ Muat ulang</button></div><div id="reviewList" class="review-list">Memuat antrian…</div></div>
+  </section>
+  <footer class="main-foot">FEBRIA MEDIA · EDITORIAL MANAGEMENT SYSTEM <span>SECURE WORKSPACE</span></footer>
+ </main>
+</div>
+</body></html>
