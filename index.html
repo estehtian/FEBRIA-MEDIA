@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111c">
+  <meta name="description" content="FEBRIA MEDIA — Informasi cerdas, inovasi tanpa batas. Berita, bisnis, teknologi, dan fakta viral dengan perspektif yang jernih.">
+  <meta property="og:title" content="FEBRIA MEDIA — Informasi Cerdas. Inovasi Tanpa Batas.">
+  <meta property="og:description" content="Berita, bisnis, teknologi, dan fakta viral dalam satu ruang informasi.">
+  <meta property="og:type" content="website">
+  <title>FEBRIA MEDIA — Informasi Cerdas. Inovasi Tanpa Batas.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one"></div><div class="ambient ambient-two"></div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="FEBRIA MEDIA beranda"><span class="brand-mark">F<span>.</span></span><span class="brand-name">FEBRIA <b>MEDIA</b><small>INFORMASI • BISNIS • TEKNOLOGI</small></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka navigasi" aria-expanded="false">☰</button>
+    <nav class="main-nav" id="mainNav">
+      <a class="active" href="#home">Beranda</a><a href="#update">Update</a><a href="#business">Business</a><a href="#tech">Tech</a><a href="#viral">Viral Fact</a><a href="#about">Tentang</a>
+    </nav>
+    <a class="header-cta" href="#latest">Jelajahi berita <span>↗</span></a>
+  </header>
+
+  <main id="home">
+    <section class="hero section-wrap">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span> INDEPENDENT DIGITAL MEDIA <i>•</i> EST. 2026</div>
+        <h1>Informasi cerdas.<br><span>Inovasi tanpa batas.</span></h1>
+        <p>Memahami dunia yang terus bergerak melalui berita, bisnis, teknologi, dan fakta yang telah diperiksa.</p>
+        <div class="hero-actions"><a class="btn btn-primary" href="#latest">Baca informasi terbaru <b>↗</b></a><a class="text-link" href="#about">Kenali FEBRIA MEDIA <span>→</span></a></div>
+        <div class="hero-stats"><div><strong>01</strong><small>Informasi terarah</small></div><div><strong>04</strong><small>Pilar konten</small></div><div><strong>24/7</strong><small>Wawasan berkembang</small></div></div>
+      </div>
+      <div class="hero-visual">
+        <div class="visual-top"><span>FM / DIGITAL BRIEFING</span><span class="status"><i></i> MEDIA DESK</span></div>
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="visual-core"><div class="core-ring">F<span>.</span></div><span>FUTURE<br>INSIGHT</span></div>
+        <div class="float-card card-top"><small>OUR FOCUS</small><b>Signal over noise.</b><span>Informasi dengan konteks.</span></div>
+        <div class="float-card card-bottom"><span class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><div><small>EDITORIAL PILLARS</small><b>NEWS · BUSINESS · TECH</b></div></div>
+        <div class="visual-index">001 <span>—</span> 2050</div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Topik utama"><div class="ticker-track"><span>FEBRIA UPDATE</span><b>✳</b><span>BUSINESS & ECONOMY</span><b>✳</b><span>TECHNOLOGY & AI</span><b>✳</b><span>VIRAL FACT CHECK</span><b>✳</b><span>FEBRIA UPDATE</span><b>✳</b><span>BUSINESS & ECONOMY</span><b>✳</b><span>TECHNOLOGY & AI</span><b>✳</b></div></section>
+
+    <section class="section-wrap latest-section" id="latest">
+      <div class="section-heading"><div><div class="eyebrow">THE DAILY SIGNAL / 01</div><h2>Ruang <span>informasi.</span></h2><p>Pilih topik, temukan perspektif, dan tetap terhubung dengan perkembangan.</p></div><div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Cari topik atau artikel..." aria-label="Cari artikel"></div></div>
+      <div class="filter-row" id="filterRow"><button class="filter-chip selected" data-filter="all">Semua topik</button><button class="filter-chip" data-filter="update">Update</button><button class="filter-chip" data-filter="business">Business</button><button class="filter-chip" data-filter="tech">Tech</button><button class="filter-chip" data-filter="viral">Viral Fact</button></div>
+      <div class="featured-grid" id="articleGrid">
+        <article class="feature-card article-card" data-category="tech" data-search="kecerdasan buatan ai produktivitas teknologi">
+          <div class="feature-art art-ai"><span class="art-label">TECH / 01</span><div class="ai-orb"><i></i><i></i><i></i></div><span class="art-caption">A NEW<br>INTELLIGENCE</span></div>
+          <div class="article-info"><div class="article-meta"><span>FEBRIA TECH</span><span>•</span><span>5 MIN READ</span></div><h3>Memahami perkembangan AI: peluang, tantangan, dan cara menggunakannya dengan bijak</h3><p>Teknologi kecerdasan buatan membuka peluang baru. Kuncinya adalah memahami kemampuan, batasan, dan tanggung jawab penggunaannya.</p><button class="read-link" data-title="Memahami perkembangan AI" data-category="FEBRIA TECH" data-body="Kecerdasan buatan berkembang menjadi alat bantu di berbagai bidang, mulai dari pendidikan hingga bisnis. Pengguna perlu memeriksa hasil, menjaga privasi, dan tidak menyerahkan keputusan penting sepenuhnya kepada sistem otomatis. Artikel ini merupakan pengantar editorial; tambahkan data dan rujukan terbaru sebelum menerbitkan versi berita aktual.">Baca ringkasan <span>↗</span></button></div>
+        </article>
+        <article class="article-card compact-card" data-category="business" data-search="bisnis digital usaha kecil ekonomi">
+          <div class="thumb art-business"><span>GROW<br>SMARTER</span><i>↗</i></div><div class="article-info"><div class="article-meta"><span>FEBRIA BUSINESS</span><span>•</span><span>4 MIN READ</span></div><h3>Strategi digital sederhana untuk mengembangkan usaha kecil</h3><p>Bangun kepercayaan pelanggan dengan informasi produk yang jelas dan layanan konsisten.</p><button class="read-link" data-title="Strategi digital untuk usaha kecil" data-category="FEBRIA BUSINESS" data-body="Mulailah dari fondasi: profil usaha yang konsisten, katalog produk yang mudah dipahami, foto autentik, respons pelanggan yang cepat, dan pencatatan transaksi. Ukur hasil dari pertanyaan masuk, konversi, dan pembelian berulang.">Baca ringkasan <span>↗</span></button></div>
+        </article>
+        <article class="article-card compact-card" data-category="update" data-search="berita update literasi informasi sumber resmi">
+          <div class="thumb art-update"><span>THE<br>UPDATE</span><i>◎</i></div><div class="article-info"><div class="article-meta"><span>FEBRIA UPDATE</span><span>•</span><span>3 MIN READ</span></div><h3>Mengapa memeriksa sumber penting sebelum membagikan berita?</h3><p>Kecepatan informasi harus berjalan bersama ketepatan, konteks, dan verifikasi.</p><button class="read-link" data-title="Periksa sumber sebelum membagikan berita" data-category="FEBRIA UPDATE" data-body="Periksa siapa penerbit informasi, tanggal publikasi, dokumen atau pernyataan asli, dan apakah media kredibel lain mengonfirmasi hal yang sama. Bedakan fakta, opini, dugaan, dan konten satir. Jika belum terverifikasi, jangan menyajikannya sebagai kepastian.">Baca ringkasan <span>↗</span></button></div>
+        </article>
+        <article class="article-card compact-card" data-category="viral" data-search="viral fakta cek fakta media sosial">
+          <div class="thumb art-viral"><span>FACT<br>FIRST</span><i>✓</i></div><div class="article-info"><div class="article-meta"><span>FEBRIA VIRAL FACT</span><span>•</span><span>4 MIN READ</span></div><h3>Konten viral belum tentu benar: kenali ciri informasi menyesatkan</h3><p>Jangan berhenti pada judul. Telusuri konteks, tanggal, sumber, dan bukti pendukung.</p><button class="read-link" data-title="Konten viral belum tentu benar" data-category="FEBRIA VIRAL FACT" data-body="Waspadai judul emosional, potongan video tanpa konteks, gambar lama yang diberi keterangan baru, dan klaim tanpa sumber. Lakukan pencarian balik gambar bila perlu dan cari sumber primer. Koreksi secara terbuka ketika informasi awal ternyata keliru.">Baca ringkasan <span>↗</span></button></div>
+        </article>
+      </div>
+      <p class="empty-state" id="emptyState" hidden>Tidak ada artikel yang cocok. Coba kata kunci atau kategori lain.</p>
+      <div class="editorial-note"><span>EDITORIAL NOTE</span><p>Contoh artikel awal untuk demonstrasi desain. Sebelum dipublikasikan sebagai berita aktual, lengkapi dengan fakta, tanggal, narasumber, dan tautan sumber tepercaya.</p></div>
+    </section>
+
+    <section class="pillar-section" id="update"><div class="section-wrap"><div class="eyebrow">OUR EDITORIAL DNA / 02</div><h2>Empat perspektif.<br><span>Satu tujuan.</span></h2><div class="pillar-grid">
+      <a href="#latest" class="pillar-item"><span class="pillar-no">01 / NEWS</span><div class="pillar-icon">↗</div><h3>FEBRIA<br>UPDATE</h3><p>Informasi terkini dengan konteks dan sumber yang jelas.</p><b>Jelajahi update →</b></a>
+      <a href="#business" class="pillar-item"><span class="pillar-no">02 / ECONOMY</span><div class="pillar-icon">⌁</div><h3>FEBRIA<br>BUSINESS</h3><p>Bisnis, ekonomi, peluang usaha, dan inspirasi pertumbuhan.</p><b>Jelajahi business →</b></a>
+      <a href="#tech" class="pillar-item"><span class="pillar-no">03 / INNOVATION</span><div class="pillar-icon">✳</div><h3>FEBRIA<br>TECH</h3><p>Teknologi, kecerdasan buatan, dan inovasi masa depan.</p><b>Jelajahi tech →</b></a>
+      <a href="#viral" class="pillar-item"><span class="pillar-no">04 / VERIFICATION</span><div class="pillar-icon">✓</div><h3>FEBRIA<br>VIRAL FACT</h3><p>Tren populer, cek fakta, dan literasi digital.</p><b>Jelajahi fakta →</b></a>
+    </div></div></section>
+
+    <section class="about-section section-wrap" id="about"><div class="about-mark">F<span>.</span></div><div><div class="eyebrow">ABOUT FEBRIA MEDIA / 03</div><h2>Lebih dari sekadar<br><span>mengikuti arus.</span></h2><p>FEBRIA MEDIA adalah ruang informasi digital yang berfokus pada berita, bisnis, teknologi, dan literasi fakta. Kami percaya informasi yang baik bukan hanya cepat ditemukan, tetapi juga perlu dipahami dan diperiksa.</p><a class="btn btn-outline" href="mailto:hello@febriamedia.id">Hubungi redaksi <span>↗</span></a></div></section>
+  </main>
+  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">F<span>.</span></span><span class="brand-name">FEBRIA <b>MEDIA</b><small>INFORMASI • BISNIS • TEKNOLOGI</small></span></a><p>Informasi Cerdas. Inovasi Tanpa Batas.</p><span>© <span id="year"></span> FEBRIA MEDIA. All rights reserved.</span></footer>
+
+  <div class="modal" id="articleModal" aria-hidden="true"><div class="modal-backdrop" data-close></div><section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><button class="modal-close" data-close aria-label="Tutup">×</button><div class="eyebrow" id="modalCategory">FEBRIA MEDIA</div><h2 id="modalTitle">Judul artikel</h2><p id="modalBody"></p><div class="modal-foot">FEBRIA MEDIA <span>•</span> INFORMASI CERDAS</div></section></div>
+  <script src="script.js"></script>
+</body>
+</html>
