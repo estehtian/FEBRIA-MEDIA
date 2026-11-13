@@ -58,3 +58,12 @@ Dashboard tersedia di `/admin/`. Website publik yang sudah ada tidak dihapus ata
 3. Jalankan blok `cron.schedule` yang dikomentari di bagian bawah file SQL.
 4. Periksa job dengan `select * from cron.job;`. Uji dahulu memakai satu berita uji dengan jadwal beberapa menit ke depan.
 5. Pastikan status berita adalah `approved`; scheduler tidak menerbitkan draft atau berita pending.
+
+
+## Manajemen tim redaksi (fitur tambahan)
+- Menu **Tim redaksi** hanya terlihat oleh akun dengan role `admin`.
+- Daftar anggota membaca tabel `public.profiles` dan menampilkan nama, email, role, serta tanggal pendaftaran.
+- Admin dapat mengubah role akun lain antara `author`, `editor`, dan `admin`. Role akun admin yang sedang login dikunci untuk mencegah admin terkunci dari sistem.
+- Untuk membuat akun login baru, buka Supabase Dashboard → Authentication → Users → Add user / Invite user. Setelah akun dibuat atau diundang, klik **Muat ulang** pada menu Tim redaksi, lalu atur rolenya.
+- Pembuatan akun Auth tidak dilakukan dari browser karena memerlukan hak istimewa server. Jangan pernah menaruh `service_role key` di file JavaScript publik.
+- Kebijakan `profile self or admin read` dan `admin manage profiles` pada `supabase/schema.sql` mengatur akses tabel profiles.
